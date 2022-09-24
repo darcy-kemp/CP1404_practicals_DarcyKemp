@@ -1,3 +1,7 @@
+"""CP1404 | prac_02 Password Stars | Darcy Kemp
+Program to return a number of stars equal to user input
+"""
+
 MIN_PW_LENGTH = 6
 
 
