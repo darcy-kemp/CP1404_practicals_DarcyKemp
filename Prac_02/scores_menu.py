@@ -1,5 +1,5 @@
 """
-CP1404 | prac_02 More Scores | Darcy Kemp
+CP1404 | prac_02 Scores Menu | Darcy Kemp
 Program to determine score status using functions and print equal stars
 """
 MENU = """R - run score calculation program
