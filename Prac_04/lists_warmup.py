@@ -15,11 +15,8 @@ numbers = [3, 1, 4, 1, 5, 9, 2]
 numbers[0] = "ten"
 numbers[-1] = 1
 
-numbers.reverse()
-numbers = numbers[:-2]
-numbers.reverse()
 
-print(f"{numbers}")
+print(f"{numbers[2:]}")
 
 if 9 in numbers:
     print("9 is in numbers")
