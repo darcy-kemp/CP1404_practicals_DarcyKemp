@@ -1,6 +1,8 @@
 """CP1404 | prac_04 list exercises | Darcy Kemp
 list exercises
 """
+
+
 def main():
     numbers = []
 
@@ -24,5 +26,6 @@ def main():
         print("access granted")
     else:
         print("access denied")
+
 
 main()
