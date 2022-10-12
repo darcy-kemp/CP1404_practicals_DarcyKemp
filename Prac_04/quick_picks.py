@@ -11,7 +11,7 @@ def main():
     number_of_picks = int(input("How many picks?: "))
 
     for i in range(1, number_of_picks + 1, 1):
-        random_lottery_pick = [0, 0, 0, 0, 0, 0]
+        random_lottery_pick = []
 
         for j in range(6):
             current_random_int = random.randint(LOWER_RANDOM_BOUNDARY,UPPER_RANDOM_BOUNDARY)
@@ -19,7 +19,7 @@ def main():
             while current_random_int in random_lottery_pick:
                 current_random_int = random.randint(LOWER_RANDOM_BOUNDARY, UPPER_RANDOM_BOUNDARY)
 
-            random_lottery_pick[j] = current_random_int
+            random_lottery_pick.append(current_random_int)
 
         print(f"Pick number {i} is: {random_lottery_pick}")
 
