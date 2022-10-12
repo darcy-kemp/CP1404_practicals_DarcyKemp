@@ -2,5 +2,9 @@
 Program to print string
 """
 
-print("Hello World")
-len("hello")
+
+def func_2(x, y):
+    z = x + y
+
+
+print(func_2(1, 2))
