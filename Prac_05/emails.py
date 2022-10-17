@@ -7,12 +7,18 @@ user_name_to_user_email = {}
 
 user_email = input("Email: ")
 
+
+def extract_name(email):
+    user_name = email.split("@")
+    del (user_name[-1])
+    user_name = user_name[0].split(".")
+    formatted_name = " ".join(user_name).title()
+    return formatted_name
+
+
 while user_email != "":
     try:
-        user_name = user_email.split("@")
-        del(user_name[-1])
-        user_name = user_name[0].split(".")
-        user_name_formatted = " ".join(user_name).title()
+        user_name_formatted = extract_name(user_email)
 
         user_name_is_correct = input(f"Is {user_name_formatted} your name?: [y/n]").lower()
         if user_name_is_correct != "y" and user_name_is_correct != "":
