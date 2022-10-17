@@ -1,6 +1,7 @@
 """CP1404 | prac_05 word occurrences | Darcy Kemp
 program to count occurrences of a word in a string
-
+est:30
+real:22
 """
 user_input_string = str(input("Text: "))
 word_to_occurrences = {}
