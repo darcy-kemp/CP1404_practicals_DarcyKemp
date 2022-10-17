@@ -24,11 +24,11 @@ while user_email != "":
         if user_name_is_correct != "y" and user_name_is_correct != "":
             user_name_formatted = input("Name: ").title()
 
-        user_name_to_user_email[user_name_formatted] = user_email
+        user_name_to_user_email[user_email] = user_name_formatted
         user_email = input("Email: ")
     except IndexError:
         print("Invalid email. Must contain an @ symbol.")
         user_email = input("Email: ")
 
 for key in user_name_to_user_email:
-    print(f"{key} ({user_name_to_user_email[key]})")
+    print(f"{user_name_to_user_email[key]} ({key})")
