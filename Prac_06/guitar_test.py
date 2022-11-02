@@ -1,26 +1,12 @@
-"""CP1404 | prac_06 guitar test | Darcy Kemp
+"""CP1404 | prac_06 guitar_test| Darcy Kemp
 program to create guitar objects from user input and append them to a list
-est:30
-real:
 """
+
 from Prac_06.guitar import Guitar
 
-guitars = []
+gibson = Guitar("Gibson L-5 CES", 1922, 16035.40)
+print(f"expected True")
+print(f"result: {gibson.is_vintage()}")
 
-guitar_name = "-1"
-
-while guitar_name != "":
-    guitar_name = input("name: ")
-    if guitar_name != "":
-        guitar_year = int(input("year: "))
-        guitar_cost = int(input("cost: "))
-
-        guitars.append(Guitar(guitar_name, guitar_year, guitar_cost))
-i = 0
-for guitar in guitars:
-    if guitar.is_vintage():
-        vintage_string = "(vintage)"
-    else:
-        vintage_string = ""
-    print(f"Guitar {i}: {guitar.name:>20} ({guitar.year}), worth ${guitar.cost:10,.2f} {vintage_string}")
-    i += 1
+print("expected: 100")
+print(f"real: {gibson.get_age()}")
