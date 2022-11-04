@@ -24,6 +24,10 @@ class ProgrammingLanguage:
         """Determine if language is dynamically typed."""
         return self.typing == "Dynamic"
 
+    def __str__(self):
+        """returns a CSV string of the class attributes."""
+        return f"{self.name}, {self.typing}, {self.reflection}, {self.pointer_arithmetic}, {self.year}"
+
 
 def run_tests():
     """Run simple tests/demos on ProgrammingLanguage class."""
