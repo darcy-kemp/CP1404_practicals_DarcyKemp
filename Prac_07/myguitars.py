@@ -16,6 +16,14 @@ def main():
             cost = float(parts[2])
             guitars.append(Guitar(name, year, cost))
 
+    while True:
+        guitar_name = input("name: ")
+        if guitar_name == "":
+            break
+        guitar_year = int(input("year: "))
+        guitar_cost = int(input("cost: "))
+
+        guitars.append(Guitar(guitar_name, guitar_year, guitar_cost))
     guitars.sort()
     print(guitars)
 
