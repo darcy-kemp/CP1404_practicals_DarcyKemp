@@ -1,11 +1,12 @@
 """CP1404 | prac_07 project management| Darcy Kemp
 
 Estimate: 60min
-Real:
+Real: 300 mins
 """
 
 from Prac_07.project import Project
 import datetime
+from operator import attrgetter
 MENU = """(L)oad Projects 
 (S)ave Projects 
 (D)isplay Projects 
@@ -33,7 +34,7 @@ def load_projects():
         for line in in_file:
             parts = line.strip().split('\t')
             name = parts[0]
-            date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
+            date = parts[1]
             priority = int(parts[2])
             cost = float(parts[3])
             completion_percent = int(parts[4])
@@ -51,22 +52,47 @@ def save_projects(projects):
 
 def add_new_project(projects):
     name = input("name: ")
-    date = input("date (in d/m/y format): ")
-    date = datetime.datetime.strptime(date, "%d/%m/%Y").date()
+    date = input("date (in dd/mm/yyyy format): ")
     priority = int(input("priority level: "))
     cost = float(input("Estimated cost: "))
     completion_percent = int(input("Completion percentage: "))
     projects.append(Project(name, date, priority, cost, completion_percent))
+    projects.sort()
     return projects
 
 
 def update_project(projects):
-    project_number = int(input("project number: "))
-    new_priority = input("New priority level: ")
-    new_completion = input("New completion level(%): ")
-    projects[project_number - 1].priority = new_priority
-    projects[project_number - 1].completion = new_completion
+    i = 0
+    for project in projects:
+        print(f"{i} {project}")
+        i += 1
+    project_number = int(input("project number to update: "))
+    new_priority = int(input("New priority level: "))
+    new_completion = int(input("New completion level(%): "))
+    projects[project_number].priority = new_priority
+    projects[project_number].completion = new_completion
+    projects.sort()
     return projects
+
+
+def display_projects(projects):
+    incomplete_projects = [project for project in projects if project.completion != 100]
+    completed_projects = [project for project in projects if project.completion == 100]
+    print("Incomplete Projects:")
+    for project in incomplete_projects:
+        print(project)
+    print("Completed Projects:")
+    for project in completed_projects:
+        print(project)
+
+
+def filter_projects_by_date(projects):
+    cutoff_date = input("show projects that start after date (dd/mm/yyyy:) ")
+    cutoff_date = datetime.datetime.strptime(cutoff_date, "%d/%m/%Y").date()
+    projects.sort(key=attrgetter('date'))
+    for project in projects:
+        if project.is_after_date(cutoff_date):
+            print(project)
 
 
 def main():
@@ -80,10 +106,10 @@ def main():
             save_projects(projects)
             user_menu_choice = get_menu_choice()
         elif user_menu_choice == "D":
-            print("test")
+            display_projects(projects)
             user_menu_choice = get_menu_choice()
         elif user_menu_choice == "F":
-            print("test")
+            filter_projects_by_date(projects)
             user_menu_choice = get_menu_choice()
         elif user_menu_choice == "A":
             projects = add_new_project(projects)
@@ -94,5 +120,3 @@ def main():
 
 
 main()
-
-
