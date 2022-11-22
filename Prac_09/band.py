@@ -9,6 +9,8 @@ class Band:
         self.members.append(musician)
 
     def play(self):
-        """Calls the play function for each member of the band"""
-        for musician in self.members:
-            print(musician.play())
+        """For each member in the band, that musician "plays"."""
+        return '\n'.join([musician.play() for musician in self.members])
+
+    def __repr__(self):
+        return f"{self.name} ({', '.join([str(musician) for musician in self.members])})"
